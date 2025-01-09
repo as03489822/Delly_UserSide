@@ -1,0 +1,122 @@
+
+import NotificationIcon from '../assets/icons/Notification.svg';
+import Logo from '../assets/icons/Deelly Logo.svg';
+import VectorIcon from '../assets/icons/Vector.svg';
+import GroupIcon from '../assets/icons/Group 1000001661.svg';
+// import BuyIcon from '../assets/icons/Buy.svg';
+import Heart from '../assets/Card/Heart.svg'
+import ProfileIcon from '../assets/icons/Profile.svg';
+import {  useState } from 'react';
+
+import Dining from '../assets/navIcons/Dinning.svg'
+import Entertain from '../assets/navIcons/Entetainment.svg'
+import Group from '../assets/navIcons/Group 1000004755.svg'
+import Home from '../assets/navIcons/Home.svg'
+import Salon from '../assets/navIcons/Salon.svg'
+import Menu from '../assets/icons/MENU.svg'
+
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+// configure react with i18n 
+import { useTranslation } from 'react-i18next';
+
+export const Header = () => {
+  let favorite = useSelector(state => state.favorite);
+  let cart = useSelector(state => state.cart);
+  
+  let[navbar , setNavbar] = useState(false);
+  let [profile , setProfile] = useState(false);
+
+  let navArr = [[Home,'HOME'],[Dining,'DINING'],[Salon,'SALON/SPA'],[Group,'ENTERTAINMENT'],[Entertain,'HOME SERVICES']]
+  let token = localStorage.getItem('token');
+  
+  // destruct hook 
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+  return (
+    < div className=''>
+    {/* upper header  */}
+    <div className="h-[44px] bg-[#013D29] hidden md:flex justify-between items-center px-6  ">
+    <div className="flex gap-3 ">
+      <img src={NotificationIcon} alt="icon" />
+      <p className="text-[14px] text-white outfit">
+        {/* to view data  of specific translation*/}
+      {t('header.top.p')}
+      </p>
+    </div>
+    <div className="flex gap-5">
+      <p className="text-[#669082] outfit">{t('header.top.sLanguage')}:</p>
+      <div className="flex gap-3">
+        <p onClick={() => changeLanguage('en')} className="cursor-pointer text-white outfit">English</p>
+        <span className="h-5 w-[1px] bg-[#669082]"></span>
+        <p onClick={() => changeLanguage('sp')} className="cursor-pointer text-[#669082] outfit">spanish</p>
+      </div>
+    </div>
+  </div>
+    
+    {/* middle header */}
+  <div className="h-[80px] flex justify-between items-center px-[30px] md:px-[60px]">
+    <div className='flex gap-10 items-center md:gap-3'>
+      <div onClick={()=> setNavbar(!navbar)} className="cursor-pointer md:hidden" >
+        {navbar? <i className="h-[24px] w-[24px] text-[24px] fa-solid fa-xmark"></i> : <img src={Menu} className="h-[24px] w-[24px] "/>}
+      </div>
+      <img src={Logo} alt="logo" />
+      <select className='cursor-pointer h-[40px] outfit  px-5 border border-[#219653] rounded-full hidden md:flex ' name="country" id="country">
+        <option value=""> {t('header.middle.select.pak')}</option>
+        <option value="">{t('header.middle.select.cad')}</option>
+        <option value="uk">{t('header.middle.select.uk')}</option>
+      </select>
+    </div>
+    <div>
+      <div className='flex  gap-7 relative px-6  '>
+        <div className=' gap-3 hidden md:flex '>
+            <img  className='absolute top-3 left-8'  src={VectorIcon} alt="search" />
+            <input className='h-[44px]  px-9 rounded-full border border-solid border-grey' type="text" name="search" id="search" />
+            <img src={GroupIcon} alt="group" />
+        </div>
+        <div className=' flex  gap-2 h-[40px] pl-3'>
+            <Link to={'/favorite'} className='cursor-pointer relative w-[40px] rounded-full h-[40px] bg-[#E9E9E9] flex justify-center items-center'>
+                <img className='  w-[20px] h-[20px]  ' src={Heart} alt="buy" />
+                <div className=' absolute top-[-5px] right-[-5px] rounded-full bg-[#fcefc0] w-5 h-5 outfit flex justify-center items-center'> {favorite.count}</div>
+            </Link>
+            <Link to={'/cart'} className='cursor-pointer relative w-[40px] rounded-full h-[40px] bg-[#E9E9E9] flex justify-center items-center'>
+            <i className=" text-[20px] fa-solid fa-basket-shopping"></i>
+            <div className=' absolute top-[-5px] right-[-5px] rounded-full bg-[#fcefc0] w-5 h-5 outfit flex justify-center items-center'>{cart.count}</div>
+            </Link>
+
+            <span onClick={()=> setProfile(!profile)} className='cursor-pointer w-[40px] rounded-full h-[40px] bg-[#E9E9E9]  items-center hidden md:flex  justify-center'>
+                <img src={ProfileIcon} alt="profile" />
+            </span>
+
+            {profile? 
+            <div className='z-50 absolute top-14 rounded-lg right-0  py-4 bg-white border'>
+              {token?  
+                <Link className='py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center' to={'/profile'}><img className='text-[10px] ' src={ProfileIcon} alt="" />User Profile</Link>  
+              :
+                <span>
+                  <Link onClick={()=> setProfile(!profile)} className=' py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center' to={'/login'} ><img className=' text-[10px]' src={ProfileIcon} alt="" />Login</Link>
+                  <Link className='py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center'><img className='text-[10px] 'to={'/signup'} src={ProfileIcon} alt="" />Sign Up</Link>
+                </span>
+              }
+            </div>
+            :null}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  className='bg-[#EDEDED] h-[1px]'><br /></div>
+  
+  {/* bottom header */}
+  <div className='  gap-20 h-[60px] pl-[60px] px-6 hidden md:flex '>
+
+    {navArr.map((el,idx) =>(
+        <div className='flex  ' key={idx}>
+            <button className=' flex items-center gap-2 outfit text-[14px]'><img className='h-[20px] ' src={el[0]} alt="" />{el[1]}</button>
+        </div>
+    ))    }
+  </div>
+    </div>
+  )
+}

@@ -1,0 +1,15 @@
+{
+    "header":{
+        "top":{
+            "p":"Delivery lead time will be impacted due to COVID-19. Stay safe!",
+            "sLanguage" :"Select Language"
+        },
+        "middle":{
+            "select":{
+                "pak": "Pakistan",
+                "cad": "Canada",
+                "uk": "UK"
+            }
+        }
+    }
+}

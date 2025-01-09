@@ -1,0 +1,15 @@
+{
+    "header":{
+        "top":{
+            "p":"El tiempo de entrega se verá afectado debido al COVID-19. ¡Mantenerse seguro!",
+            "sLanguage" :"Seleccionar idioma"
+        },
+        "middle":{
+            "select":{
+                "pak": "Pakistán",
+                "cad": "Canadá",
+                "uk": "Reino Unido"
+            }
+        }
+    }
+}
