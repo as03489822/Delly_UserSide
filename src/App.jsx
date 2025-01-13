@@ -6,6 +6,11 @@ import SignUp from './pages/signup/SignUp'
 import { Favorite } from "./components/Favorite";
 import { Cart } from "./components/Cart";
 import './i18n'
+import { Dinning } from "./pages/dinning/Dinning";
+import { Salon } from "./pages/salon/Salon";
+import { Entertainment } from "./pages/entertainment/Entertainmeent";
+import { HomeServices } from "./pages/home services/HomeServices";
+import { SearchResult } from "./pages/search result/SearchResult";
 
 function App() {
 
@@ -19,6 +24,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/dinning" element={<Dinning />} />
+        <Route path="/salon" element={<Salon />} />
+        <Route path="/entertainment" element={<Entertainment />} />
+        <Route path="/home services" element={<HomeServices />} />
+        <Route path="/search results" element={<SearchResult />} />
       </Routes>
     </>
   )

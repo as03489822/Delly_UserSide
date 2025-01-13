@@ -15,26 +15,37 @@ import Home from '../assets/navIcons/Home.svg'
 import Salon from '../assets/navIcons/Salon.svg'
 import Menu from '../assets/icons/MENU.svg'
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // configure react with i18n 
 import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
+  let navigate = useNavigate()
+  // destruct hook 
+  const { t, i18n } = useTranslation();
   let favorite = useSelector(state => state.favorite);
   let cart = useSelector(state => state.cart);
   
   let[navbar , setNavbar] = useState(false);
   let [profile , setProfile] = useState(false);
-
-  let navArr = [[Home,'HOME'],[Dining,'DINING'],[Salon,'SALON/SPA'],[Group,'ENTERTAINMENT'],[Entertain,'HOME SERVICES']]
+  let [search , setSearch] = useState('')
+  let navArr = [[Home,t('header.bottom.1'),'/home'],[Dining,t('header.bottom.2'),'/dinning'],[Salon,t('header.bottom.3'),'/salon'],[Group,t('header.bottom.4'),'/entertainment'],[Entertain,t('header.bottom.5') ,'/home services'],]
   let token = localStorage.getItem('token');
-  
-  // destruct hook 
-  const { t, i18n } = useTranslation();
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
+
+  let SearchChange = (e) =>{
+    setSearch(e.target.value)
+  }
+
+  let searchSubmit = (e) =>{
+    e.preventDefault();
+    if(search.trim()) {
+      navigate(`/search results?search=${search.trim()}`);
+    }
+  }
   return (
     < div className=''>
     {/* upper header  */}
@@ -49,9 +60,9 @@ export const Header = () => {
     <div className="flex gap-5">
       <p className="text-[#669082] outfit">{t('header.top.sLanguage')}:</p>
       <div className="flex gap-3">
-        <p onClick={() => changeLanguage('en')} className="cursor-pointer text-white outfit">English</p>
+        <p onClick={() => changeLanguage('en')} className={`cursor-pointer  outfit ${i18n.language === 'en'?'text-white' : 'text-[#669082]'}`}>English</p>
         <span className="h-5 w-[1px] bg-[#669082]"></span>
-        <p onClick={() => changeLanguage('sp')} className="cursor-pointer text-[#669082] outfit">spanish</p>
+        <p onClick={() => changeLanguage('sp')} className={`cursor-pointer  outfit ${i18n.language === 'sp'?'text-white' : 'text-[#669082]'}`}>Spanish</p>
       </div>
     </div>
   </div>
@@ -72,9 +83,13 @@ export const Header = () => {
     <div>
       <div className='flex  gap-7 relative px-6  '>
         <div className=' gap-3 hidden md:flex '>
-            <img  className='absolute top-3 left-8'  src={VectorIcon} alt="search" />
-            <input className='h-[44px]  px-9 rounded-full border border-solid border-grey' type="text" name="search" id="search" />
-            <img src={GroupIcon} alt="group" />
+          <form  onSubmit={searchSubmit} >
+            <button type="submit" className="cursor-pointer absolute top-3 left-8">
+              <img src={VectorIcon} alt="search" />
+            </button>
+            <input  value={search} onChange={SearchChange} className=' outline-none h-[44px]  px-9 rounded-full border border-solid border-grey' type="text" name="search" id="search" />
+          </form>
+          <img src={GroupIcon} alt="group" />
         </div>
         <div className=' flex  gap-2 h-[40px] pl-3'>
             <Link to={'/favorite'} className='cursor-pointer relative w-[40px] rounded-full h-[40px] bg-[#E9E9E9] flex justify-center items-center'>
@@ -112,10 +127,10 @@ export const Header = () => {
   <div className='  gap-20 h-[60px] pl-[60px] px-6 hidden md:flex '>
 
     {navArr.map((el,idx) =>(
-        <div className='flex  ' key={idx}>
-            <button className=' flex items-center gap-2 outfit text-[14px]'><img className='h-[20px] ' src={el[0]} alt="" />{el[1]}</button>
-        </div>
-    ))    }
+      <div className='flex ' key={idx}>
+          <Link to={el[2]} className='cursor-pointer flex items-center gap-2 outfit text-[14px]'><img className='h-[20px] ' src={el[0]} alt="" />{el[1]}</Link>
+      </div>
+    ))}
   </div>
     </div>
   )

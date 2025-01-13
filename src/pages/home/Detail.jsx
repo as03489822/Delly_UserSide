@@ -6,11 +6,12 @@ import Cleaning from '../../assets/Hero/image 82453.svg'
 import one from '../../assets/Hero/Group.svg'
 import two from '../../assets/Hero/Frame (1).svg'
 import three from '../../assets/Hero/Group (1).svg'
-
+import { useTranslation } from 'react-i18next'
 
 export const Detail = () => {
-    let iconArr = [[Dinning,'Dinning','#D5F4ED'],[Salon , 'Salon/Spa','#F5E3DB'], [Entertain,'Entertainment','#F5DCDC'], [Cleaning,'Cleaning','#CFE9FE'] , [Cleaning,'Cleaning','#CFE9FE'] , [Cleaning,'Cleaning','#CFE9FE'] , [Cleaning,'Cleaning', '#CFE9FE']]
-    let cardArr = [[one, 'Amazing Last Minute Discounts' ,'Get Amazing Last Minute Discounts on your favorite categories food, of beauty, getaways & more.'],[two,'Save','Save Money with our deals of & offers'],[three,'Secure Payments','The Secure payment methods throughout the checkout process of to keep your data secure & safe.']]
+    let {t} =  useTranslation()
+    let iconArr = [[Dinning,t('hero.details.D1.0'),'#D5F4ED'],[Salon , t('hero.details.D1.1'),'#F5E3DB'], [Entertain,t('hero.details.D1.2'),'#F5DCDC'], [Cleaning,t('hero.details.D1.3'),'#CFE9FE'] , [Cleaning,t('hero.details.D1.3'),'#CFE9FE'] , [Cleaning,t('hero.details.D1.3'),'#CFE9FE'] , [Cleaning,t('hero.details.D1.3'), '#CFE9FE']];
+    let cardArr = [[one, t('hero.details.D2.0.h') ,t('hero.details.D2.0.p')],[two,t('hero.details.D2.1.h'),t('hero.details.D2.1.p')],[three,t('hero.details.D2.2.h'),t('hero.details.D2.2.p')]]
   return (
     <>
     <div className=' flex gap-10 flex-col items-center bg-[#F9F9F9] py-10 pt-[360px] md:pt-[100px]'>

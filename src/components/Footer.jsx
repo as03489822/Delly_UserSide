@@ -3,11 +3,13 @@ import Visa from '../assets/creditCard/Visa.png'
 import Mastercard from '../assets/creditCard/Mastercard.png'
 import Paypal from '../assets/creditCard/Paypal.png'
 import Pay from '../assets/creditCard/ Pay.png'
+import { useTranslation } from 'react-i18next'
 
 
 export default function Footer(){
+    let {t} = useTranslation()
     let icons = [['#1DA1F2','fa-brands fa-twitter'], ['#1877F2', 'fa-brands fa-facebook'], ['#F00073','fa-brands fa-instagram']];
-    let list1 =['About Us', 'Privacy & Policy', 'Contact Us', 'FAQs' , 'Terms & Conditions'];
+    let list1 =t('footer.top.oCompany.list',{returnObjects:true});
     let payment =[Visa , Mastercard , Paypal , Pay ];
     return( 
     
@@ -18,12 +20,12 @@ export default function Footer(){
                     
                     <div className='flex  '>
                     <div className='' >
-                        <h1 className=' text-[18px] oufit font-semibold'>Top Deals</h1>
-                        <p className='pt-3 text-[14px] opacity-50 w-[300px]'>Top Deals is an e-commerce site that connects businesses with customers by providing discounted offers, service coupons, or special offers. Top Deals brings a whole ecommerce platform for business owners and customers to save a lot of money.</p>
+                        <h1 className=' text-[18px] oufit font-semibold'>{t('footer.top.tDeal.heading')}</h1>
+                        <p className='pt-3 text-[14px] opacity-50 w-[300px]'>{t('footer.top.tDeal.paragraph')}</p>
                         </div>
                     </div>
                     <div>
-                        <h1 className='text-[18px] oufit font-semibold'>Our Company</h1>
+                        <h1 className='text-[18px] oufit font-semibold'>{t('footer.top.oCompany.heading')}</h1>
                         <ul className='pt-3 flex flex-col gap-2'>
                             {list1.map((el,idx) =>(
                                 <li className='text-[14px] opacity-50 w-[300px]' key={idx}>{el}</li>
@@ -31,7 +33,7 @@ export default function Footer(){
                         </ul>
                     </div>
                     <div>
-                        <h1 className='text-[18px] oufit font-semibold'>Our Payment Partners</h1>
+                        <h1 className='text-[18px] oufit font-semibold'>{t('footer.top.payment')}</h1>
                             <div className='flex gap-2 pt-3'>
                                 {payment.map((el,idx) =>(
                                     <div className='border py-2 px-1' key={idx}>
@@ -47,7 +49,7 @@ export default function Footer(){
                 <hr className="mb-8  md:my-8  mx-4 text-center w-[95%] md:mx-auto  "/>
                 <div className="pb-8 md:ml-12  w-[90%] md:w-[85%] ">
                     <div className="md:flex md:justify-between text-center w-full">
-                        <p>Shop.co &#169; 2000-2023. All Right Reserved</p>
+                        <p>{t('footer.bottom')}</p>
                         <div className="flex justify-center  items-center gap-4 mt-4 md:mt-auto ">
                             {icons.map((icons , index) =>
                             <div className=' flex justify-center items-center rounded-xl w-[32px] h-[32px]' style={{backgroundColor: icons[0]}}  key={index}> 
