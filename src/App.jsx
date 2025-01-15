@@ -10,7 +10,7 @@ import { Dinning } from "./pages/dinning/Dinning";
 import { Salon } from "./pages/salon/Salon";
 import { Entertainment } from "./pages/entertainment/Entertainmeent";
 import { HomeServices } from "./pages/home services/HomeServices";
-import { SearchResult } from "./pages/search result/SearchResult";
+import { ProductDetail } from "./pages/product details/ProductDetail";
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
         <Route path="/salon" element={<Salon />} />
         <Route path="/entertainment" element={<Entertainment />} />
         <Route path="/home services" element={<HomeServices />} />
-        <Route path="/search results" element={<SearchResult />} />
+        <Route path="/product/details/:id" element={<ProductDetail />} />
       </Routes>
     </>
   )

@@ -45,7 +45,7 @@ Sidebar.propTypes = {
     viewByCtgry: PropTypes.func.isRequired,
     products: PropTypes.arrayOf(
     PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,

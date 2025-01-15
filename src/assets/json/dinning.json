@@ -1,6 +1,6 @@
 [
     {
-      "id": 1,
+      "id": "1a",
       "title": "Elegant Wooden Dining Table",
       "image": "https://edwardgeorgelondon.com/wp-content/uploads/content/dinning-room-inspiration-ideas-10.jpg",
       "price": 499.52,
@@ -9,7 +9,7 @@
       "category": "Wood"
     },
     {
-      "id": 2,
+      "id": "2a",
       "title": "Modern Glass Dining Set",
       "image": "https://www.houzlook.com/assets/images/upload/Dining/4%20Seater%20Dining%20Table%20Sets/Fredo%204%20Seater%20Dinning%20Set-20181108102925123.jpg",
       "price": 794.83,
@@ -18,7 +18,7 @@
       "category": "Wood"
     },
     {
-      "id": 3,
+      "id": "3a",
       "title": "Classic Fabric Dining Chair",
       "image": "https://urbangalleria.com/cdn/shop/files/pl89199660-remark_1024x1024_1024x1024_90bf4bb0-c17e-416d-b842-aac05325b7b2.webp?v=1707653026",
       "price": 533.02,
@@ -27,7 +27,7 @@
       "category": "Fabric"
     },
     {
-      "id": 4,
+      "id": "4a",
       "title": "Rustic Wood Dining Bench",
       "image": "https://edwardgeorgelondon.com/wp-content/uploads/content/dinning-room-inspiration-ideas-10.jpg",
       "price": 645.07,
@@ -36,7 +36,7 @@
       "category": "Glass"
     },
     {
-      "id": 5,
+      "id": "3a",
       "title": "Contemporary Glass Dining Table",
       "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/339139094/GJ/DW/UH/24135102/dinning-table-gold-plated.jpg",
       "price": 179.83,
@@ -45,7 +45,7 @@
       "category": "Glass"
     },
     {
-      "id": 6,
+      "id": "6a",
       "title": "Upholstered Fabric Dining Sofa",
       "image": "https://www.houzlook.com/assets/images/upload/Dining/4%20Seater%20Dining%20Table%20Sets/Fredo%204%20Seater%20Dinning%20Set-20181108102925123.jpg",
       "price": 162.24,
@@ -54,7 +54,7 @@
       "category": "Glass"
     },
     {
-      "id": 7,
+      "id": "7a",
       "title": "Vintage Wooden Dining Set",
       "image": "https://urbangalleria.com/cdn/shop/files/pl89199660-remark_1024x1024_1024x1024_90bf4bb0-c17e-416d-b842-aac05325b7b2.webp?v=1707653026",
       "price": 170.37,
@@ -63,7 +63,7 @@
       "category": "Glass"
     },
     {
-      "id": 8,
+      "id": "8a",
       "title": "Minimalist Glass Top Table",
       "image": "https://edwardgeorgelondon.com/wp-content/uploads/content/dinning-room-inspiration-ideas-10.jpg",
       "price": 317.06,
@@ -72,7 +72,7 @@
       "category": "Wood"
     },
     {
-      "id": 9,
+      "id": "9a",
       "title": "Luxury Fabric Dining Seats",
       "image": "https://www.houzlook.com/assets/images/upload/Dining/4%20Seater%20Dining%20Table%20Sets/Fredo%204%20Seater%20Dinning%20Set-20181108102925123.jpg",
       "price": 896.27,
@@ -81,7 +81,7 @@
       "category": "Glass"
     },
     {
-      "id": 10,
+      "id": "10a",
       "title": "Traditional Wooden Dining Table",
       "image": "https://urbangalleria.com/cdn/shop/files/pl89199660-remark_1024x1024_1024x1024_90bf4bb0-c17e-416d-b842-aac05325b7b2.webp?v=1707653026",
       "price": 798.53,

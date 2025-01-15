@@ -12,8 +12,6 @@ export const Deals = () => {
 
   const firstThreeDeals = items.slice(0, 3);
   const secondThreeDeals = items.slice(6, 9);
-  console.log(secondThreeDeals)
-  console.log(items)
 
   let showMore=()=>{
     setMore(true)

@@ -15,13 +15,12 @@ import Home from '../assets/navIcons/Home.svg'
 import Salon from '../assets/navIcons/Salon.svg'
 import Menu from '../assets/icons/MENU.svg'
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // configure react with i18n 
 import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
-  let navigate = useNavigate()
   // destruct hook 
   const { t, i18n } = useTranslation();
   let favorite = useSelector(state => state.favorite);
@@ -42,9 +41,8 @@ export const Header = () => {
 
   let searchSubmit = (e) =>{
     e.preventDefault();
-    if(search.trim()) {
-      navigate(`/search results?search=${search.trim()}`);
-    }
+    console.log(search);
+    setSearch('')
   }
   return (
     < div className=''>

@@ -4,6 +4,7 @@ import Union from '../assets/Card/Union.svg'
 import Location from '../assets/Card/Location.svg'
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
+import { removeFavourite ,setCartCount,setFavouriteCount,resetCartCount,resetFavouriteCount } from "../store/store";
 // import axios from "axios";
 
 import { jwtDecode } from "jwt-decode"
@@ -32,12 +33,12 @@ function Card({data}){
             const isLiked = authFavorites.some(fav => fav.id === data.id);
             setHeart(isLiked);
 
-            dispatch({type : 'FAVOURITE COUNT' , payload: authFavorites.length})
-            dispatch({type : 'CART COUNT', payload: cartCount})
+            dispatch(setFavouriteCount(authFavorites.length))
+            dispatch(setCartCount(cartCount))
 
         }else{
-            dispatch({type : 'RESET FAVOURITE COUNT'}) 
-            dispatch({type : 'RESET CART COUNT'}) 
+            dispatch(resetFavouriteCount) 
+            dispatch(resetCartCount) 
         }
       }, [data.id ,token ,dispatch]);
 
@@ -58,7 +59,7 @@ function Card({data}){
             } else{
                 let updatedArr=  favorites.filter(fav => fav.id != card.id);
                 localStorage.setItem('favorites' , JSON.stringify(updatedArr))
-                dispatch({type:'REMOVE FAVOURITE'})
+                dispatch(removeFavourite())
              }
 
             setHeart(!heart)
