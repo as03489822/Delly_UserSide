@@ -3,10 +3,10 @@ import Image from '../../assets/Hero/2c5598627d268e8c9154dc45635c709d.jpeg'
 import playIcon from '../../assets/Hero/Play Circle.svg'
 import { SearchForm } from './SearchForm'
 import { Detail } from './Detail'
-
 import { useTranslation } from 'react-i18next';
 
 export const Hero = () => {
+  
   const { t, } = useTranslation();
   return (
     <>

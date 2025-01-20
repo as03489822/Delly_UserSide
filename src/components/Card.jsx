@@ -3,19 +3,23 @@ import CardRating from "./CardRating"
 import Union from '../assets/Card/Union.svg'
 import Location from '../assets/Card/Location.svg'
 import PropTypes from 'prop-types';
-import { useDispatch } from "react-redux";
-import { removeFavourite ,setCartCount,setFavouriteCount,resetCartCount,resetFavouriteCount } from "../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setCartCount, resetCartCount, addCart } from "../slices/cartSlice";
+import { removeFavourite ,setFavouriteCount,resetFavouriteCount, addFavourite,} from "../slices/favoriteSlice";
 // import axios from "axios";
 
 import { jwtDecode } from "jwt-decode"
 import { toast , ToastContainer } from "react-toastify";
 
 function Card({data}){
-    let token = localStorage.getItem('token');
+     
+    let token = useSelector(state => state.auth.token)
     let dispatch = useDispatch();
 
     let [more, setMore] = useState(false);
     let [heart , setHeart] = useState(false);
+
+
 
     useEffect(() => {
         if(token){
@@ -37,8 +41,8 @@ function Card({data}){
             dispatch(setCartCount(cartCount))
 
         }else{
-            dispatch(resetFavouriteCount) 
-            dispatch(resetCartCount) 
+            dispatch(resetFavouriteCount()) 
+            dispatch(resetCartCount()) 
         }
       }, [data.id ,token ,dispatch]);
 
@@ -55,7 +59,7 @@ function Card({data}){
             if(heart === false){
                 favorites.push(card)
                 localStorage.setItem('favorites', JSON.stringify(favorites))
-                dispatch({type: 'ADD FAVOURITE'})
+                dispatch(addFavourite())
             } else{
                 let updatedArr=  favorites.filter(fav => fav.id != card.id);
                 localStorage.setItem('favorites' , JSON.stringify(updatedArr))
@@ -88,7 +92,7 @@ function Card({data}){
         }
 
         localStorage.setItem('cart', JSON.stringify(carts));    
-        dispatch({ type: 'ADD CART' });
+        dispatch(addCart());
     };
     
 

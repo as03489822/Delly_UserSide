@@ -1,10 +1,10 @@
 import { useState } from "react";
-import axios  from "axios";
 import PropTypes from 'prop-types'
-import { toast } from 'react-toastify'
+import { useDispatch } from "react-redux";
+import { editUser } from "../../slices/profileSlice";
 
-export const EditForm = ({setForm , form, setEdit, edit}) => {
-    let [pass , setPass] = useState(!edit);
+export const EditForm = ({setForm , form}) => {
+    let [pass , setPass] = useState(false);
 
     let handleOnChange = (e) => {
         let {name , value} = e.target;
@@ -12,17 +12,13 @@ export const EditForm = ({setForm , form, setEdit, edit}) => {
           {...preVal , [name]: value}
         ))
     }   
+    let  dispatch =  useDispatch()
 
     let handleUpdate = async (e) =>{
-        e.preventDefault()
-        try{
-          let response= await axios.put('http://localhost:8080/user/profile/edit',{form});
-          toast.success(`${response.data.message}`)
-          setEdit(!edit)
-        }catch(err){
-          toast.error(`${err.response.data.message}`)
-        }
-      }
+      e.preventDefault()
+      dispatch(editUser(form))
+
+    }
 
   return (
     <form onSubmit={handleUpdate} className="pt-5 w-full outfit  px-5 text-sm ">
@@ -71,6 +67,4 @@ EditForm.propTypes = {
     password: PropTypes.string.isRequired,
     confirmPassword: PropTypes.string.isRequired,
   }).isRequired,
-  setEdit: PropTypes.func.isRequired,
-  edit: PropTypes.bool.isRequired,
 };

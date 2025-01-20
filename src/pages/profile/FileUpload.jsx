@@ -1,37 +1,23 @@
-import defaultPic  from '../../assets/default user/defaultUser.png'
-import { toast } from 'react-toastify';
-import axios from 'axios';
-import PropTypes from 'prop-types'
+import defaultPic  from '../../assets/default user/defaultUser.png';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { imageUpload } from '../../slices/profileSlice';
 
-export const FileUpload = ({token , setUpload , upload ,form }) => {
+
+
+export const FileUpload = ({token ,form }) => {
+    let dispatch = useDispatch()
     let handleFileUpload = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
-      
         const formData = new FormData();
         formData.append("profileImage", file);
-        try {
-          let response = await axios.post(
-            "http://localhost:8080/user/profile/uploadImage",
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-                authorization: `Bearer ${token}`
-              },
-            }
-          );
-          setUpload(!upload)
-          toast.success(`${response.data.message}`);
-        } catch (err) {
-          console.log(err)
-          toast.error("Failed to upload file.");
-        }
+        dispatch(imageUpload({formData,token}))
       };
 
   return (
     <div  className="relative w-[150px] h-[150px]  rounded-full">
-      <img className="h-full w-full rounded-full object-cover" src={form.profileImage?`http://localhost:8080/${form.profileImage.path}` :defaultPic} alt="user" />
+      <img className="h-full w-full rounded-full object-cover" src={form.profileImage?`http://localhost:8080/${form.profileImage.path}` : defaultPic} alt="user" />
       <label
         htmlFor="file-input"
         className="absolute right-[12px] bottom-[12px] hover:bg-[#013D29] text-[#219653] bg-white h-[30px] w-[30px] border rounded-full cursor-pointer flex justify-center items-center"
@@ -51,8 +37,6 @@ export const FileUpload = ({token , setUpload , upload ,form }) => {
 
 FileUpload.propTypes = {
     token : PropTypes.string.isRequired,
-    setUpload: PropTypes.func.isRequired,
-    upload: PropTypes.bool.isRequired,
     form: PropTypes.shape({
         profileImage:PropTypes.shape({
             path: PropTypes.string.isRequired

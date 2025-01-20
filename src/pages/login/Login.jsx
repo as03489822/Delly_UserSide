@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ResetPassword } from "./ResetPassword";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+
+
+import { loginUser } from '../../slices/authSlice';
 
 function Login() {
   let navigate = useNavigate();
@@ -11,7 +12,6 @@ function Login() {
 
   // Accessing auth state from Redux
   const { loading, error, isAuthenticated } = useSelector((state) => state.auth);
-
   let [reset, setReset] = useState(false);
   const [form, setForm] = useState({
     email: '',
@@ -27,19 +27,7 @@ function Login() {
   // Handling login with Redux thunk
   const handleLogin = (e) => {
     e.preventDefault();
-    let loginUser =  createAsyncThunk(
-        'auth/loginUser',
-        async (formData, thunkAPI) => {
-          try {
-            const response = await axios.post('http://localhost:8080/user/auth/login', formData);
-            localStorage.setItem('token', response.data.token); // Store token in localStorage
-            return response.data; // Return user data
-          } catch (error) {
-            // Reject with a custom error message
-            return thunkAPI.rejectWithValue(error.response?.data?.message || 'Something went wrong');
-          }
-        }
-      );
+
     dispatch(loginUser(form));
   };
 
@@ -47,14 +35,17 @@ function Login() {
     navigate('/signup');
   };
 
-  if (isAuthenticated) {
-    navigate('/home');
-  }
+  useEffect(()=>{
+    if (isAuthenticated) {
+      navigate('/home');
+    }
+  },[isAuthenticated ,navigate])
+
 
   return (
     <div className="mb-[130px] h-[70vh] flex flex-col justify-center items-center">
       {reset ? (
-        <div className="absolute top-10 z-10 w-[30%] h-[70%] bg-white rounded-lg border-[2px] border-[#013D29]">
+        <div className="absolute top-10 z-10 w-full h-[70%] bg-white rounded-lg">
           <ResetPassword reset={reset} setReset={setReset} />
         </div>
       ) : null}
@@ -74,7 +65,7 @@ function Login() {
             name="email"
             required
           />
-          {error && <p className="rounded-full mt-1 text-[14px] bg-[#fcd2d2] pl-2 text-red font-semibold">{error}</p>}
+          {error && <p className="rounded-full mt-1 text-[12px]  pl-2 text-[#ff1c1c] font-semibold">{error}</p>}
         </div>
         <div className="flex outfit gap-1 flex-col mt-4">
           <label htmlFor="passwords">
@@ -90,17 +81,17 @@ function Login() {
             name="password"
             required
           />
-          {error && <p className="rounded-full mt-1 text-[14px] bg-[#fcd2d2] pl-2 text-red font-semibold">{error}</p>}
+          {error && <p className="rounded-full mt-1 text-[12px] text-[#ff1c1c] pl-2 text-red font-semibold">{error}</p>}
         </div>
         <button type="submit" className="mt-4 bg-[#013D29] outfit text-white py-2 px-4 rounded-full">
           {loading ? 'Logging in...' : 'Log In'}
         </button>
       </form>
-      {error ? (
+      {/* {error ? ( */}
         <p onClick={() => setReset(!reset)} className="cursor-pointer text-[#219653] font-bold h-[40px]">
           Reset Password
         </p>
-      ) : null}
+      {/* ) : null} */}
       <div className="my-5 outfit">
         <span className="text-12px text-[gray]">Don&apos;t have an account?</span>
         <span onClick={navigateToSignup} className="ml-2 cursor-pointer underline font-bold">

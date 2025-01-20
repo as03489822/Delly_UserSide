@@ -9,16 +9,16 @@ import Union from '../../assets/Card/Union.svg'
 import Footer from "../../components/Footer";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode"
-
-
+import { addCart, addOneItemCount } from "../../slices/cartSlice";
+    
 
 
 export const ProductDetail = () => {
     let [count ,setCount] = useState(1);
     let {id} = useParams();
-    let token  = localStorage.getItem('token')
+    let token = useSelector(state => state.auth.token)
     let dispatch = useDispatch();
 
     let data = [...data1, ...data2, ...data3, ...data4];
@@ -54,9 +54,9 @@ export const ProductDetail = () => {
 
         localStorage.setItem('cart', JSON.stringify(carts));    
         if(count === 1){
-            dispatch({ type:'ADD CART'});
+            dispatch(addCart());
         }else(
-            dispatch({ type: 'ADD ONE ITEM COUNT' ,payload: count })
+            dispatch(addOneItemCount(count))
         )
     };
     

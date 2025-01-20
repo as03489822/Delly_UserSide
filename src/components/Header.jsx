@@ -15,13 +15,17 @@ import Home from '../assets/navIcons/Home.svg'
 import Salon from '../assets/navIcons/Salon.svg'
 import Menu from '../assets/icons/MENU.svg'
 
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector ,useDispatch} from 'react-redux';
 // configure react with i18n 
 import { useTranslation } from 'react-i18next';
+import { logout } from '../slices/authSlice';
+
 
 export const Header = () => {
   // destruct hook 
+  let navigate= useNavigate()
+  let dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   let favorite = useSelector(state => state.favorite);
   let cart = useSelector(state => state.cart);
@@ -30,7 +34,7 @@ export const Header = () => {
   let [profile , setProfile] = useState(false);
   let [search , setSearch] = useState('')
   let navArr = [[Home,t('header.bottom.1'),'/home'],[Dining,t('header.bottom.2'),'/dinning'],[Salon,t('header.bottom.3'),'/salon'],[Group,t('header.bottom.4'),'/entertainment'],[Entertain,t('header.bottom.5') ,'/home services'],]
-  let token = localStorage.getItem('token');
+  let token = useSelector(state => state.auth.token)
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
@@ -43,6 +47,12 @@ export const Header = () => {
     e.preventDefault();
     console.log(search);
     setSearch('')
+  }
+
+  let handleLogout = ()=>{
+    dispatch(logout());
+    navigate('/');
+    setProfile(!profile);
   }
   return (
     < div className=''>
@@ -106,11 +116,14 @@ export const Header = () => {
             {profile? 
             <div className='z-50 absolute top-14 rounded-lg right-0  py-4 bg-white border'>
               {token?  
-                <Link className='py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center' to={'/profile'}><img className='text-[10px] ' src={ProfileIcon} alt="" />User Profile</Link>  
-              :
+                <span>
+                  <Link className='py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center' to={'/profile'}><img className='text-[10px] ' src={ProfileIcon} alt="" />User Profile</Link> 
+                  <p onClick={handleLogout} className='cursor-pointer py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center' to={'/profile'}><img className='text-[10px] ' src={ProfileIcon} alt="" />LogOut</p>  
+                </span>
+                :
                 <span>
                   <Link onClick={()=> setProfile(!profile)} className=' py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center' to={'/login'} ><img className=' text-[10px]' src={ProfileIcon} alt="" />Login</Link>
-                  <Link className='py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center'><img className='text-[10px] 'to={'/signup'} src={ProfileIcon} alt="" />Sign Up</Link>
+                  <Link onClick={()=> setProfile(!profile)} className='py-2 w-[200px] pl-4 flex gap-2 text-[14px] hover:bg-[#E9FBF2] items-center' to={'/signup'}  ><img className='text-[10px] 'src={ProfileIcon} alt="" />Sign Up</Link>
                 </span>
               }
             </div>

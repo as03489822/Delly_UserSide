@@ -3,10 +3,10 @@
   import { useEffect, useState } from "react"
 
   import { jwtDecode } from "jwt-decode"
-  import { useDispatch } from "react-redux";
+  import { useDispatch, useSelector } from "react-redux";
   import { Header } from "./Header";
   import Footer from "./Footer";
-
+  import { addCart, removeCart, removeOneItemCount } from "../slices/cartSlice";
 
   export const Cart = () => {
     let dispatch = useDispatch()
@@ -16,7 +16,7 @@
     let [id , setId] = useState(null);
     let [checkedArr , setCheckedArr] = useState([])
     
-    const token= localStorage.getItem('token')
+    let token = useSelector(state => state.auth.token)
     useEffect(() => {
       if(token) {
         setId(jwtDecode(token).id);  
@@ -44,11 +44,10 @@
           ? { ...item, count: item.count + 1 }
           : item
       ); 
-      console.log(updatedCheck)
       setCheckedArr(updatedCheck)
       setCartData(updatedCart)  
       localStorage.setItem('cart', JSON.stringify(updatedCart));    
-      dispatch({ type: 'ADD CART' });
+      dispatch(addCart());
     }
 
     let countDecrement=(card)=>{
@@ -69,7 +68,7 @@
       setCheckedArr(updatedCheck)
       setCartData(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));    
-      dispatch({ type: 'REMOVE CART' });
+      dispatch(removeCart());
     }
     
     let handlRemove = (card) => {
@@ -81,7 +80,7 @@
       setCartData(deletes);
       localStorage.setItem('cart', JSON.stringify(deletes)); 
       
-      dispatch({type : 'MEMOVE ONE ITEM COUNT', payload: card.count })
+      dispatch(removeOneItemCount(card.count))
     }
 
     let handleCheck = (card) =>{
@@ -92,7 +91,6 @@
         
       }else{
         let newArr = [...checkedArr , card]
-        console.log(newArr)
         setCheckedArr(newArr)
       }
     } 

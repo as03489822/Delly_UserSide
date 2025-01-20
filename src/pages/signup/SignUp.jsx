@@ -1,22 +1,28 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { signUpUser } from "../../slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 
  function SignUp(){
+    let dispatch = useDispatch();
+    let {isAuthenticated, loading, error} = useSelector(state => state.auth)
     const navigate = useNavigate()    
     const [form, setForm] = useState({
         username:'',
         email:'',
         password:''
   })
+  useEffect(()=>{
+    if(isAuthenticated){
+        navigate('/home')
+    }
+  },[isAuthenticated , navigate])
     const handleOnChange = (e)=>{
         setForm((preValu)=>{
             return{...preValu, [e.target.name] : e.target.value}
         })
-        setError('')
     }
-    
-    let [error , setError] = useState('');
 
     let navigateToLogin = ()=>{
         navigate('/Login')
@@ -24,14 +30,8 @@ import axios from 'axios';
 
     const handleSignup = async(e)=>{
         e.preventDefault();
-        try{
-        let response = await axios.post('http://localhost:8080/user/auth/signup' , {form});
-        localStorage.setItem('token',response.data.token);
-        navigate('/home')
-        }catch(err){
-            setError(err.response.data.message)
-        }
-        }
+        dispatch(signUpUser(form))
+    }
 
 
   return (
@@ -52,7 +52,9 @@ import axios from 'axios';
                 <label htmlFor="passwords"><b>Password</b></label>
                 <input className="border border-solid border-grey focus:outline-none py-2 pl-2 rounded-lg" id="passwords" type="Password" placeholder="password" onChange={handleOnChange} value={form.password} name="password" required />
             </div>
-            <button type="submit" className="mt-4  text-white bg-[#013D29] outfit py-2 px-4 rounded-full">Create Account</button>
+            <button type="submit" className="mt-4  text-white bg-[#013D29] outfit py-2 px-4 rounded-full">
+            {loading ? 'Creating Account...' : 'Create Account'}
+            </button>
         </form>
         <div className="my-5 outfit"><span className=" text-12px text-[gray]">Already have  account?</span><span onClick={navigateToLogin} className=" ml-2 cursor-pointer underline font-bold">Login</span></div>
     </div>
