@@ -22,8 +22,7 @@
         "paragraph": "Explore nearby deals on map and buy deals to enjoy quality food with your family",
         "bText":"Explore",
         "searchForm":{
-            "dinning": "Dinning",
-            "selectAll" : "Select All",
+            "selectCategory": "Select Category",
             "selectSubCtgry" : "Select Sub Category",
             "city": "Lahore",
             "destination": "Destination",
@@ -36,7 +35,8 @@
                 "Salon/Spa",
                 "Entertainment",
                 "Cleaning"
-            ],            "D2":[
+            ],
+            "D2":[
                 {"h":"Amazing Last Minute Discounts","p":"Get Amazing Last Minute Discounts on your favorite categories food, of beauty, getaways & more."},
                 {"h":"Save", "p":"Save Money with our deals of & offers"},
                 {"h":"Secure Payments", "p":"The Secure payment methods throughout the checkout process of to keep your data secure & safe."}
@@ -54,7 +54,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -71,7 +71,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -88,7 +88,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -105,7 +105,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -122,7 +122,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -139,7 +139,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -155,7 +155,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -171,7 +171,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -187,7 +187,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -203,7 +203,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -219,7 +219,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -235,7 +235,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -251,7 +251,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -275,7 +275,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -292,7 +292,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -309,7 +309,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -326,7 +326,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -343,7 +343,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -360,7 +360,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -376,7 +376,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -392,7 +392,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -408,7 +408,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -424,7 +424,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -440,7 +440,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -456,7 +456,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},
@@ -472,7 +472,7 @@
                 "rating": 4,
                 "title": "Loaded Fries At Aloo Cart",
                 "price": 896.27,
-                "saleOff": 15,
+                "sale": 15,
                 "location": [
                     {"country":"Pakistan", "city":"Lahore"},
                     {"country":"Washington D.C.","city":"Southwest"},

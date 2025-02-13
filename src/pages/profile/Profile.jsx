@@ -6,13 +6,13 @@ import { EditForm } from "./EditForm"
 // import { UserDetails } from "./UserDetails"
 import { FileUpload } from "./FileUpload"
 import {Header} from '../../components/Header'
-import { useDispatch, useSelector } from "react-redux"
-import { getUser } from "../../slices/profileSlice"
+import {useSelector } from "react-redux"
+import {jwtDecode} from "jwt-decode"
 
 
 export const Profile = () => {
+
   let navigate = useNavigate();
-  let dispatch = useDispatch();
   let [form , setForm] = useState({
     id:'',
     username: '',
@@ -22,33 +22,30 @@ export const Profile = () => {
     confirmPassword: ''
   })
 
-  
   let auth = useSelector(state => state.auth);
-  let profile = useSelector(state => state.profile)
-  let user = profile.user
+  let token = auth.token ;
 
   useEffect(()=>{
-    if(!auth.isAuthenticated){
+    if(!token){
         navigate('/home')
     }
-  },[auth.isAuthenticated , navigate])
+  },[token, navigate])
 
-  useEffect(()=>{
-    dispatch(getUser(auth.token))
-  },[dispatch ,auth.token ])
 
   useEffect(() => {
-    if (user) {
+    if(token){
+      let {role, userEmail, userId, userImage ,userName} = jwtDecode(token)
       setForm(prev => ({
         ...prev,
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        profileImage: user.profileImage
-      }));
+        role,
+        id: userId,
+        username: userName,
+        email: userEmail,
+        profileImage: userImage
+      })
+    );
     }
-    console.log(user)
-  }, [user]);
+  }, [token]);
 
 
 
@@ -65,7 +62,7 @@ export const Profile = () => {
           </div>
         </div>
         <div className="flex justify-center pt-5">  
-          <FileUpload className   form={form}  token={auth.token}   />
+          <FileUpload className   form={form}  token={token}   />
         </div>
       </div>
         <EditForm setForm={setForm}  form={form}  /> 

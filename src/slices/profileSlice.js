@@ -8,23 +8,6 @@ const initialState = {
     error : null,
     loading: false
 }
-
-export  const getUser = createAsyncThunk(
-    'profile/getUser',
-    async (token ) => {
-        try{
-            let response = await axios.get('http://localhost:8080/user/profile', {
-              headers:{
-                authorization:`Bearer ${token}`
-              }
-            })
-            return response.data;
-          }catch(error){
-            console.log(error)
-          }
-    }
-)
-
 export const imageUpload = createAsyncThunk(
     'profile/imageUpload',
     async ({ formData , token} ) => {
@@ -68,9 +51,6 @@ const profileSlice = createSlice({
     reducers:{},
     extraReducers: (builder) =>{
         builder
-        .addCase(getUser.fulfilled , (state , action)=>{
-            state.user = action.payload
-        })
         .addCase(imageUpload.fulfilled , (state , action) =>{
             if(state.user){
                 state.user.profileImage = action.payload
